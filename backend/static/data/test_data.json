@@ -1,0 +1,134 @@
+[
+    {
+      "feed_id": "10001",
+      "category": "general",
+      "algorithm": "default",
+      "likes": 150,
+      "posts": 25,
+      "toxicity_score": 0.12,
+      "positivity_score": 0.75,
+      "commercial_link_score": 0.53,
+      "poster_diversity_score": 0.94
+    },
+    {
+      "feed_id": "10002",
+      "category": "news",
+      "algorithm": "personalized",
+      "likes": 230,
+      "posts": 40,
+      "toxicity_score": 0.05,
+      "positivity_score": 0.90,
+      "commercial_link_score": 0.20,
+      "poster_diversity_score": 0.88
+    },
+    {
+      "feed_id": "10003",
+      "category": "sports",
+      "algorithm": "trending",
+      "likes": 180,
+      "posts": 35,
+      "toxicity_score": 0.18,
+      "positivity_score": 0.60,
+      "commercial_link_score": 0.40,
+      "poster_diversity_score": 0.91
+    },
+    {
+      "feed_id": "10004",
+      "category": "entertainment",
+      "algorithm": "ranked",
+      "likes": 300,
+      "posts": 50,
+      "toxicity_score": 0.08,
+      "positivity_score": 0.85,
+      "commercial_link_score": 0.25,
+      "poster_diversity_score": 0.96
+    },
+    {
+      "feed_id": "10005",
+      "category": "general",
+      "algorithm": "personalized",
+      "likes": 120,
+      "posts": 20,
+      "toxicity_score": 0.20,
+      "positivity_score": 0.55,
+      "commercial_link_score": 0.62,
+      "poster_diversity_score": 0.89
+    },
+    {
+      "feed_id": "10006",
+      "category": "news",
+      "algorithm": "trending",
+      "likes": 95,
+      "posts": 15,
+      "toxicity_score": 0.35,
+      "positivity_score": 0.45,
+      "commercial_link_score": 0.30,
+      "poster_diversity_score": 0.80
+    },
+    {
+      "feed_id": "10007",
+      "category": "sports",
+      "algorithm": "default",
+      "likes": 210,
+      "posts": 38,
+      "toxicity_score": 0.15,
+      "positivity_score": 0.70,
+      "commercial_link_score": 0.75,
+      "poster_diversity_score": 0.87
+    },
+    {
+      "feed_id": "10008",
+      "category": "entertainment",
+      "algorithm": "ranked",
+      "likes": 175,
+      "posts": 30,
+      "toxicity_score": 0.10,
+      "positivity_score": 0.92,
+      "commercial_link_score": 0.18,
+      "poster_diversity_score": 0.95
+    },
+    {
+      "feed_id": "10009",
+      "category": "general",
+      "algorithm": "trending",
+      "likes": 145,
+      "posts": 27,
+      "toxicity_score": 0.07,
+      "positivity_score": 0.88,
+      "commercial_link_score": 0.22,
+      "poster_diversity_score": 0.90
+    },
+    {
+      "feed_id": "10010",
+      "category": "news",
+      "algorithm": "default",
+      "likes": 190,
+      "posts": 32,
+      "toxicity_score": 0.09,
+      "positivity_score": 0.95,
+      "commercial_link_score": 0.40,
+      "poster_diversity_score": 0.93
+    },
+    {
+      "feed_id": "10011",
+      "category": "sports",
+      "algorithm": "personalized",
+      "likes": 220,
+      "posts": 42,
+      "toxicity_score": 0.04,
+      "positivity_score": 0.97,
+      "commercial_link_score": 0.10,
+      "poster_diversity_score": 0.98
+    },
+    {
+      "feed_id": "10012",
+      "category": "entertainment",
+      "algorithm": "trending",
+      "likes": 165,
+      "posts": 29,
+      "toxicity_score": 0.14,
+      "positivity_score": 0.80,
+      "commercial_link_score": 0.68,
+      "poster_diversity_score": 0.85
+    }
+]  
