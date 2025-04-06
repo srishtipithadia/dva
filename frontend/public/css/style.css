@@ -9,7 +9,7 @@ nav {
     background: #354dad;
     padding: 10px 0px;
     height: 37px;
-    border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 15px 15px;
     z-index: 4;
     position: absolute;
     width: 100%;
@@ -37,8 +37,62 @@ header {
 
 #title {
     background: #95a4ef;
+    height: 355px;
+    border-radius: 0px 0px 15px 15px;
+    z-index: 3;
+    position: absolute;
+    width: 100%;
+    top: 45px;
+}
+
+#why-compare {
+    padding: 10px 80px;
+}
+
+.benefits-container {
+    display: flex;
+    justify-content: space-around;
+    background: #ced5f5;
+    position: absolute;
+    top: 385px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    height: 460px;
+    width: 100%;
+}
+
+.benefit-card {
+    background: #182451;
+    color: white;
+    width: 400px;
+    margin: 10px;
+    border-radius: 15px;
+    height: 200px;
+    padding: 10px;
+}
+
+.benefit-row-1 {
+    margin-left: 10%;
+}
+
+.benefit-row-2 {
+    margin-right: 10%;
+}
+
+#compare-title {
+    background: #95a4ef;
     height: 170px;
-    border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 15px 15px;
+    z-index: 3;
+    position: absolute;
+    width: 100%;
+    top: 45px;
+}
+
+#results-title {
+    background: #95a4ef;
+    height: 80px;
+    border-radius: 0px 0px 15px 15px;
     z-index: 3;
     position: absolute;
     width: 100%;
@@ -59,6 +113,13 @@ header {
     border-radius: 20px;
     color: white;
     padding: 7px 30px;
+    cursor: pointer;
+}
+
+#selected-feeds-title {
+    padding-top: 20px;
+    color: white;
+    font-size: 20px;
 }
 
 .category-button {
@@ -68,17 +129,179 @@ header {
 }
 
 .category-button:hover {
-    background-color: #182451;
+    background-color: #20306b;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-.benefits {
-    display: flex;
-    justify-content: space-around;
-    padding: 20px;
+.category-button.selected {
+    background-color: #182451;
+    color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.feeds-container {
+    background: #ced5f5;
+    position: absolute;
+    top: 200px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    min-height: 70%;
+    width: 100%;
+}
+
+.feed-card {
+    background: #182451;
+    color: white;
+    width: 250px;
+    display: inline-block;
+    margin: 10px;
+    border-radius: 15px;
+    height: 250px;
+}
+
+.feed-card:hover {
+    box-shadow: 0px 0px 0px 6px green inset;
+}
+
+
+.feed-card.selected {
+    background-color: #182451ab;
+    box-shadow: 0px 0px 0px 6px green inset;
+}
+
+.display:hover {
+    box-shadow: none !important;
+}
+
+.selected-feeds {
+    margin-top: 25px;
+    min-height: 110px;
+    max-height: 380px;
+    background: #95a4ef;
+    border-radius: 15px 15px 0px 0px;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+}
+
+.selected-feeds-container {
+    padding-bottom: 60px;
+}
+
+.compare-container {
+    position: fixed;
+    z-index: 4;
+    width: 100%;
+    bottom: 0px;
+    background: #354dad;
+    border-radius: 15px 15px 0px 0px;
+    height: 50px;
+}
+
+.compare-button {
+    display: inline-block;
+    background-color: green;
+    margin: 10px 15px;
+}
+
+.compare-button:hover {
+    background-color: rgb(1, 109, 1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.feeds-comparison-container {
+    padding-top: 150px;
+}
+
+.feed-title-circle {
+    background: #182451;
+    color: white;
+    border-radius: 50px;
+    padding: 5px;
+    width: 200px;
+    margin: 2.5px auto;
+    font-weight: normal;
+}
+
+.comparison-circle {
+    border-radius: 50px;
+    padding: 5px;
+    width: 75px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #182451;
 }
 
 footer {
     background: #222;
     color: white;
     padding: 20px;
+}
+
+.results-table {
+    background: #ced5f5;
+    padding-top: 100px;
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    height: 290px;
+    border-radius: 0px 0px 15px 15px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 35px;
+}
+
+.results-bar-chart {
+    position: absolute;
+    top: 470px;
+    width: 100%;
+}
+
+.all-feeds-container {
+    position: absolute;
+    top: 1000px;
+    width: 100%;
+    padding-top: 10px;
+    background: #e6eafc;
+    border-radius: 15px 15px 0px 0px;
+}
+
+table {
+    background: #182451;
+    color: white;
+    border: 2px;
+    border-radius: 20px;
+}
+
+#likes, #posts, #toxicity_score, #positivity_score, 
+#commercial_link_score, #poster_diversity_score {
+    background-color: white;
+    color: #182451;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.drop-down-container {
+    padding: 10px;
+}
+
+.drop-down-1, .drop-down-2 {
+    display: inline-block;
+    font-size: 14px;
+}
+
+.drop-down-2 {
+    margin-left: 75px;
+}
+
+.dropdown {
+    padding: 5px;
+    margin-left: 10px;
+    border-radius: 10px;
+    border: 1px solid #1824516f;
+}
+
+.results-scatter-plot {
+    margin-bottom: 30px;
 }
