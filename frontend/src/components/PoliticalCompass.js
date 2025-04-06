@@ -1,64 +1,81 @@
 import React, { useState } from "react";
-import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Label } from "recharts";
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Label, Line } from "recharts";
 
 const PoliticalCompass = ({ feeds }) => {
-  const [xAxis, setXAxis] = useState("toxicity_score"); // Default X-axis
-  const [yAxis, setYAxis] = useState("positivity_score"); // Default Y-axis
+    const dimensions = ["likes", "posts", "toxicity_score", "positivity_score", "commercial_link_score", "poster_diversity_score"];
+    const [xAxis, setXAxis] = useState(dimensions[2]);
+    const [yAxis, setYAxis] = useState(dimensions[3]);
 
-  const dimensions = ["likes", "posts", "toxicity_score", "positivity_score", "commercial_link_score", "poster_diversity_score"];
+    const formatLabel = (label) => {
+        if (typeof label !== 'string') return label;
+        return label.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
+    };
+  
+    const formatPercentage = (value) => {
+        return `${(value * 100).toFixed(0)}%`;
+    };
 
   return (
-    <div className="p-4 border rounded-lg bg-white shadow-md">
-      <h2 className="text-xl font-semibold mb-4">Feed Political Compass</h2>
+    <div className="p-6 max-w-4xl mx-auto border rounded-lg bg-white shadow-lg">
+        <div style={{ textAlign: "center", fontSize: "18px", color: "#182451", paddingBottom: "20px", paddingTop: "20px" }}>
+            Compare All Feeds
+        </div>
+        <div className="drop-down-container">
+            <div className="drop-down-1">
+                <span>X-Axis:</span>
+                <select value={xAxis} onChange={(e) => setXAxis(e.target.value)} className="dropdown">
+                    {dimensions.map((dim) => (
+                        <option key={dim} value={dim}>{formatLabel(dim)}</option>
+                    ))}
+                </select>
+            </div>
 
-      {/* Dropdowns for selecting X and Y axes */}
-      <div className="flex gap-4 mb-4">
-        <label>
-          X-Axis:{" "}
-          <select value={xAxis} onChange={(e) => setXAxis(e.target.value)} className="border p-2 rounded">
-            {dimensions.map((dim) => (
-              <option key={dim} value={dim}>{dim}</option>
-            ))}
-          </select>
-        </label>
+            <div className="drop-down-2">
+                <span>Y-Axis:</span>
+                <select value={yAxis} onChange={(e) => setYAxis(e.target.value)} className="dropdown">
+                    {dimensions.map((dim) => (
+                        <option key={dim} value={dim}>{formatLabel(dim)}</option>
+                    ))}
+                </select>
+            </div>
+        </div>
 
-        <label>
-          Y-Axis:{" "}
-          <select value={yAxis} onChange={(e) => setYAxis(e.target.value)} className="border p-2 rounded">
-            {dimensions.map((dim) => (
-              <option key={dim} value={dim}>{dim}</option>
-            ))}
-          </select>
-        </label>
-      </div>
+        <ResponsiveContainer className="results-scatter-plot" height={500}>
+            <ScatterChart margin={{ top: 20, right: 30, left: 30, bottom: 20 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#A0AEC0" />
+                <XAxis 
+                    type="number" 
+                    dataKey={xAxis} 
+                    name={xAxis} 
+                    domain={[0, 1]} 
+                    tick={{ fontSize: 14, fill: "#182451" }}
+                    tickFormatter={formatPercentage}
+                >
+                <Label value={formatLabel(xAxis)} offset={-10} position="insideBottom" fontSize={16} fill="#182451" />
+                </XAxis>
 
-      {/* Scatter Chart */}
-      <ResponsiveContainer width="100%" height={500}>
-        <ScatterChart margin={{ top: 20, right: 30, left: 30, bottom: 20 }}>
-          {/* Grid */}
-          <CartesianGrid strokeDasharray="3 3" />
+                <YAxis 
+                    type="number" 
+                    dataKey={yAxis} 
+                    name={yAxis} 
+                    domain={[0, 1]} 
+                    tick={{ fontSize: 14, fill: "#182451" }}
+                    tickFormatter={formatPercentage}
+                >
+                    <Label value={formatLabel(yAxis)} angle={-90} position="insideLeft" fontSize={16} fill="#182451" />
+                </YAxis>
 
-          {/* X-Axis */}
-          <XAxis type="number" dataKey={xAxis} name={xAxis} domain={[-1, 1]} tick={{ fontSize: 12 }}>
-            <Label value={xAxis} offset={-10} position="insideBottom" />
-          </XAxis>
-
-          {/* Y-Axis */}
-          <YAxis type="number" dataKey={yAxis} name={yAxis} domain={[-1, 1]} tick={{ fontSize: 12 }}>
-            <Label value={yAxis} angle={-90} position="insideLeft" />
-          </YAxis>
-
-          {/* Tooltip */}
-          <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-
-          {/* Scatter Data */}
-          <Scatter name="Feeds" data={feeds} fill="#8884d8" />
-
-          {/* Center Lines for Quadrants */}
-          <CartesianGrid vertical={false} stroke="black" strokeWidth={1} />
-          <CartesianGrid horizontal={false} stroke="black" strokeWidth={1} />
-        </ScatterChart>
-      </ResponsiveContainer>
+                <Tooltip
+                    cursor={{ strokeDasharray: "3 3", stroke: "#6B7280", strokeWidth: 1 }}
+                    contentStyle={{ backgroundColor: "#ffffff", border: "1px solid #D1D5DB", borderRadius: "4px", padding: "8px" }}
+                    formatter={(value) => formatPercentage(value)}
+                    labelFormatter={(label) => {
+                        return `${formatLabel(xAxis)}: ${formatPercentage(props.payload[0].payload[xAxis])}, ${formatLabel(yAxis)}: ${formatPercentage(props.payload[0].payload[yAxis])}`;
+                    }}
+                />
+                <Scatter name="Feeds" data={feeds} fill="#182451" shape="circle" />
+            </ScatterChart>
+        </ResponsiveContainer>
     </div>
   );
 };

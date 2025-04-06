@@ -31,7 +31,7 @@ const ComparisonPage = () => {
         </div>
         <span>Project Title</span>
       </nav>
-      <div id="title">
+      <div id="compare-title">
           <div id="page-title">Feed Comparison Tool</div>
           <p>Select two feeds to compare from the categories below:</p>
 

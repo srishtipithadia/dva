@@ -47,7 +47,7 @@ const ResultsPage = () => {
         )}
       </div>
 
-      <div className="p-4">
+      <div className="all-feeds-container">
         <PoliticalCompass feeds={feeds} />
       </div>
     </div>
