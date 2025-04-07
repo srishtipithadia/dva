@@ -22,7 +22,7 @@ const FeedSelector = ({ selectedCategory }) => {
     }, []);
 
     useEffect(() => {
-        setFilteredFeeds(feeds.filter(feed => selectedCategory === "all" || feed.category === selectedCategory));
+        setFilteredFeeds(feeds.filter(feed => selectedCategory === "all" || feed.topic === selectedCategory));
     }, [selectedCategory, feeds]);
 
     useEffect(() => {
@@ -39,10 +39,10 @@ const FeedSelector = ({ selectedCategory }) => {
     }, []);
 
     const handleSelectFeed = (feed) => {
-        const isSelected = selectedFeeds.some(selected => selected.feed_id === feed.feed_id);
+        const isSelected = selectedFeeds.some(selected => selected.display_name === feed.display_name);
     
         if (isSelected) {
-          setSelectedFeeds(selectedFeeds.filter(selected => selected.feed_id !== feed.feed_id));
+          setSelectedFeeds(selectedFeeds.filter(selected => selected.display_name !== feed.display_name));
         } else if (selectedFeeds.length < 2) {
           setSelectedFeeds([...selectedFeeds, feed]);
         }
@@ -60,15 +60,12 @@ const FeedSelector = ({ selectedCategory }) => {
                 filteredFeeds.map(feed => (
                 <div
                 key={feed.feed_id}
-                className={`feed-card ${selectedFeeds.some(selected => selected.feed_id === feed.feed_id) ? "selected" : ""}`}
+                className={`feed-card ${selectedFeeds.some(selected => selected.display_name === feed.display_name) ? "selected" : ""}`}
                 onClick={() => handleSelectFeed(feed)}
                 >
-                    <h2 className="text-lg font-semibold">{feed.category.toUpperCase()}</h2>
-                    <p>Algorithm: {feed.algorithm}</p>
-                    <p>Likes: {feed.likes}</p>
-                    <p>Posts: {feed.posts}</p>
-                    <p>Toxicity Score: {feed.toxicity_score}</p>
-                    <p>Positivity Score: {feed.positivity_score}</p>
+                    <h2 className="text-lg font-semibold">{feed.topic.toUpperCase()}</h2>
+                    <p>Feed: {feed.display_name}</p>
+                    <p>Description: {feed.description}</p>
                 </div>
                 ))
             ) : (
@@ -84,12 +81,9 @@ const FeedSelector = ({ selectedCategory }) => {
                         <div class="selected-feeds-container">
                         {selectedFeeds.map(feed => (
                             <div className="display feed-card">
-                                <h2 className="text-lg font-semibold">{feed.category.toUpperCase()}</h2>
-                                <p>Algorithm: {feed.algorithm}</p>
-                                <p>Likes: {feed.likes}</p>
-                                <p>Posts: {feed.posts}</p>
-                                <p>Toxicity Score: {feed.toxicity_score}</p>
-                                <p>Positivity Score: {feed.positivity_score}</p>
+                                <h2 className="text-lg font-semibold">{feed.topic.toUpperCase()}</h2>
+                                <p>Feed: {feed.display_name}</p>
+                                <p>Description: {feed.description}</p>
                             </div>
                         ))}
                         </div>

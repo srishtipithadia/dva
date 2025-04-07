@@ -29,14 +29,14 @@ const ComparisonPage = () => {
             <a onClick={goToHomePage}> About Us</a>
             <a onClick={goToComparisonPage}>Comparison Tool</a>
         </div>
-        <span>Project Title</span>
+        <span>RGBSky</span>
       </nav>
       <div id="compare-title">
           <div id="page-title">Feed Comparison Tool</div>
           <p>Select two feeds to compare from the categories below:</p>
 
           <div id="category-buttons">
-            {["all", "general", "sports", "news", "entertainment"].map((category) => (
+            {["all", "technology", "sports", "politics", "finance", "entertainment", "health", "education", "travel", "food", "fashion"].map((category) => (
               <div
                 key={category}
                 className={`category-button button ${selectedCategory === category ? "selected" : ""}`}

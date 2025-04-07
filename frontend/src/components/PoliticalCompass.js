@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Label, Line } from "recharts";
 
 const PoliticalCompass = ({ feeds }) => {
-    const dimensions = ["likes", "posts", "toxicity_score", "positivity_score", "commercial_link_score", "poster_diversity_score"];
+    const dimensions = ["likes", "posts", "toxicity_score", "positivity_score", "subjectivity_score", "poster_diversity_score", "reverse_chrono_score"];
     const [xAxis, setXAxis] = useState(dimensions[2]);
     const [yAxis, setYAxis] = useState(dimensions[3]);
 

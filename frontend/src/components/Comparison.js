@@ -6,8 +6,8 @@ const Comparison = ({ feed1, feed2 }) => {
     const [allData, setAllData] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const metrics = ["likes", "posts", "toxicity_score", "positivity_score", "commercial_link_score", "poster_diversity_score"];
-    const percentageMetrics = ["toxicity_score", "positivity_score", "commercial_link_score", "poster_diversity_score"];
+    const metrics = ["likes", "number_of_posts", "toxicity_score", "positivity_score", "subjectivity_score", "poster_diversity_score", "reverse_chrono_score"];
+    const percentageMetrics = ["toxicity_score", "positivity_score", "subjectivity_score", "poster_diversity_score", "reverse_chrono_score"];
 
     useEffect(() => {
         setLoading(true);
@@ -32,23 +32,25 @@ const Comparison = ({ feed1, feed2 }) => {
         switch (metric) {
             case "likes":
                 return "The total number of likes received on posts.";
-            case "posts":
+            case "number_of_posts":
                 return "The total number of posts made by the feed.";
             case "toxicity_score":
                 return "Measures the level of toxic language used in the posts.";
             case "positivity_score":
                 return "Measures the positivity or optimism in the posts.";
-            case "commercial_link_score":
+            case "subjectivity_score":
                 return "The proportion of posts with commercial links.";
             case "poster_diversity_score":
                 return "The diversity of the users posting content.";
+            case "reverse_chrono_score":
+                return "idk";
             default:
                 return "No description available.";
         }
     };
 
-    const getColor = (feedId, metric, allValues) => {
-        let scaledFeedData = allData.find(x => x.feed_id === feedId) || {};
+    const getColor = (displayName, metric, allValues) => {
+        let scaledFeedData = allData.find(x => x.display_name === displayName) || {};
         let value = scaledFeedData[metric];
 
         if (value === undefined || !allValues.length) return "white"; 
@@ -117,17 +119,17 @@ const Comparison = ({ feed1, feed2 }) => {
         <div>
             <div class="results-table">
                 {feed1 && feed2 ? (
-                    <table border="1" style={{ width: "700px", textAlign: "center", borderCollapse: "collapse" }}>
+                    <table border="1" style={{ width: "800px", textAlign: "center", borderCollapse: "collapse" }}>
                         <thead>
                             <tr>
                                 <th style={{width: "200px"}}>Metric</th>
                                 <th>
-                                    <div class="feed-title-circle">Category: {capitalize(feed1.category)}</div>
-                                    <div class="feed-title-circle">Algorithm: {capitalize(feed1.algorithm)}</div>
+                                    <div class="feed-title-circle">Category: {capitalize(feed1.topic)}</div>
+                                    <div class="feed-title-circle">Feed: {capitalize(feed1.display_name)}</div>
                                 </th>
                                 <th>
-                                    <div class="feed-title-circle">Category: {capitalize(feed2.category)}</div>
-                                    <div class="feed-title-circle">Algorithm: {capitalize(feed2.algorithm)}</div>
+                                    <div class="feed-title-circle">Category: {capitalize(feed2.topic)}</div>
+                                    <div class="feed-title-circle">Feed: {capitalize(feed2.display_name)}</div>
                                 </th>
                             </tr>
                         </thead>
@@ -165,11 +167,12 @@ const Comparison = ({ feed1, feed2 }) => {
                 )}
 
                 <ReactTooltip id="likes" />
-                <ReactTooltip id="posts" />
+                <ReactTooltip id="number_of_posts" />
                 <ReactTooltip id="toxicity_score" />
                 <ReactTooltip id="positivity_score" />
-                <ReactTooltip id="commercial_link_score" />
+                <ReactTooltip id="subjectivity_score" />
                 <ReactTooltip id="poster_diversity_score" />
+                <ReactTooltip id="reverse_chrono_score" />
             </div>
 
             <div class="results-bar-chart">

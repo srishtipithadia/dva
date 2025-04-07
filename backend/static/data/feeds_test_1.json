@@ -1,0 +1,26 @@
+[
+    {
+        "display_name": "NFL Numbers & Analytics",
+        "description": "All things numbers and data related to the National Football League (NFL). \ud83c\udfc8\ud83d\udcca\ud83d\udcc8\ud83d\udcc8",
+        "poster_diversity_score": 0.3076923077,
+        "reverse_chrono_score": 0.3234714004,
+        "positivity_score": 0.6970216841,
+        "toxicity_score": 0.7421850562,
+        "subjectivity_score": 0.533433453,
+        "likes": 33.358974359,
+        "topic": "entertainment",
+        "number_of_posts": 39.0
+    },
+    {
+        "display_name": "Suzanne \ud83c\udf11\u2728 Art Feed",
+        "description": "All my drawings! Sometimes nsfw",
+        "poster_diversity_score": 0.0071428571,
+        "reverse_chrono_score": 0.4480612245,
+        "positivity_score": 0.8229925383,
+        "toxicity_score": 0.6393595487,
+        "subjectivity_score": 0.5999856847,
+        "likes": 658.7071428571,
+        "topic": "entertainment",
+        "number_of_posts": 140.0
+    }
+]

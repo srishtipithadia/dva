@@ -37,7 +37,7 @@ header {
 
 #title {
     background: #95a4ef;
-    height: 355px;
+    height: 190px;
     border-radius: 0px 0px 15px 15px;
     z-index: 3;
     position: absolute;
@@ -54,39 +54,35 @@ header {
     justify-content: space-around;
     background: #ced5f5;
     position: absolute;
-    top: 385px;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    height: 460px;
-    width: 100%;
+    top: 220px;
+    padding: 40px 80px;
+    height: 510px;
+    width: calc(100vw - 160px);
 }
 
 .benefit-card {
     background: #182451;
     color: white;
-    width: 400px;
+    width: 270px;
     margin: 10px;
     border-radius: 15px;
-    height: 200px;
-    padding: 10px;
-}
-
-.benefit-row-1 {
-    margin-left: 10%;
-}
-
-.benefit-row-2 {
-    margin-right: 10%;
+    height: 170px;
+    padding: 20px 40px;
 }
 
 #compare-title {
     background: #95a4ef;
-    height: 170px;
+    height: 220px;
     border-radius: 0px 0px 15px 15px;
     z-index: 3;
     position: absolute;
     width: 100%;
     top: 45px;
+}
+
+#category-buttons {
+    margin: auto;
+    width: 75%;
 }
 
 #results-title {
@@ -142,7 +138,7 @@ header {
 .feeds-container {
     background: #ced5f5;
     position: absolute;
-    top: 200px;
+    top: 250px;
     padding-top: 40px;
     padding-bottom: 40px;
     min-height: 70%;
@@ -152,11 +148,14 @@ header {
 .feed-card {
     background: #182451;
     color: white;
-    width: 250px;
-    display: inline-block;
+    width: 300px;
+    display: inline-table;
     margin: 10px;
     border-radius: 15px;
-    height: 250px;
+    height: 280px;
+    padding: 20px;
+    word-wrap: break-word;
+    word-break: break-word;
 }
 
 .feed-card:hover {
@@ -218,7 +217,7 @@ header {
     color: white;
     border-radius: 50px;
     padding: 5px;
-    width: 200px;
+    width: 300px;
     margin: 2.5px auto;
     font-weight: normal;
 }
@@ -244,7 +243,7 @@ footer {
     position: absolute;
     top: 60px;
     width: 100%;
-    height: 290px;
+    height: 390px;
     border-radius: 0px 0px 15px 15px;
     display: flex;
     justify-content: center;
@@ -253,13 +252,13 @@ footer {
 
 .results-bar-chart {
     position: absolute;
-    top: 470px;
+    top: 575px;
     width: 100%;
 }
 
 .all-feeds-container {
     position: absolute;
-    top: 1000px;
+    top: 1100px;
     width: 100%;
     padding-top: 10px;
     background: #e6eafc;

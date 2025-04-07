@@ -8,7 +8,9 @@
       "toxicity_score": 0.12,
       "positivity_score": 0.75,
       "commercial_link_score": 0.53,
-      "poster_diversity_score": 0.94
+      "poster_diversity_score": 0.94,
+      "display_name": "NFL Numbers & Analytics",
+      "description": "All things numbers and data related to the National Football League (NFL). \ud83c\udfc8\ud83d\udcca\ud83d\udcc8\ud83d\udcc8"
     },
     {
       "feed_id": "10002",

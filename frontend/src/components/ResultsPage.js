@@ -35,7 +35,7 @@ const ResultsPage = () => {
             <a onClick={goToHomePage}> About Us</a>
             <a onClick={goToComparisonPage}>Comparison Tool</a>
         </div>
-        <span>Project Title</span>
+        <span>RGBSky</span>
       </nav>
       <div id="results-title">
           <div id="page-title">Feed Comparison Results</div>
