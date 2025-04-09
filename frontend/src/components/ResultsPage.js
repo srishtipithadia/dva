@@ -48,7 +48,7 @@ const ResultsPage = () => {
       </div>
 
       <div className="all-feeds-container">
-        <PoliticalCompass feeds={feeds} />
+        <PoliticalCompass feeds={feeds} highlightedFeedIds={[selectedFeeds[0].uri, selectedFeeds[1].uri]} />
       </div>
     </div>
   );

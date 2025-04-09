@@ -6,7 +6,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-data_file = os.path.join(app.static_folder, 'data', 'feeds_scored.json')
+data_file = os.path.join(app.static_folder, 'data', 'feeds_scored_final.json')
 
 def scale_values(feeds, keys):
     min_max = {key: (min(feed[key] for feed in feeds), max(feed[key] for feed in feeds)) for key in keys}
@@ -21,13 +21,6 @@ def scale_values(feeds, keys):
 
     return feeds
 
-@app.route('/api/feed_data', methods=['GET'])
-def get_feed_data():
-    with open(data_file) as f:
-        data = json.load(f)
-        
-    return jsonify(data)
-
 @app.route('/api/normalized_data')
 def get_normalized_data():
     with open(data_file) as f:
@@ -37,6 +30,13 @@ def get_normalized_data():
     normalized_data = scale_values(data, keys_to_scale)
 
     return jsonify(normalized_data)
+
+@app.route('/api/feed_data', methods=['GET'])
+def get_feed_data():
+    with open(data_file) as f:
+        data = json.load(f)
+        
+    return jsonify(data)
 
 if __name__ == '__main__':
     app.run(debug=True)

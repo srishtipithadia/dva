@@ -39,10 +39,10 @@ const FeedSelector = ({ selectedCategory }) => {
     }, []);
 
     const handleSelectFeed = (feed) => {
-        const isSelected = selectedFeeds.some(selected => selected.display_name === feed.display_name);
+        const isSelected = selectedFeeds.some(selected => selected.uri === feed.uri);
     
         if (isSelected) {
-          setSelectedFeeds(selectedFeeds.filter(selected => selected.display_name !== feed.display_name));
+          setSelectedFeeds(selectedFeeds.filter(selected => selected.uri !== feed.uri));
         } else if (selectedFeeds.length < 2) {
           setSelectedFeeds([...selectedFeeds, feed]);
         }
@@ -60,7 +60,7 @@ const FeedSelector = ({ selectedCategory }) => {
                 filteredFeeds.map(feed => (
                 <div
                 key={feed.feed_id}
-                className={`feed-card ${selectedFeeds.some(selected => selected.display_name === feed.display_name) ? "selected" : ""}`}
+                className={`feed-card ${selectedFeeds.some(selected => selected.uri === feed.uri) ? "selected" : ""}`}
                 onClick={() => handleSelectFeed(feed)}
                 >
                     <h2 className="text-lg font-semibold">{feed.topic.toUpperCase()}</h2>

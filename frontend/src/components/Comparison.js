@@ -49,8 +49,8 @@ const Comparison = ({ feed1, feed2 }) => {
         }
     };
 
-    const getColor = (displayName, metric, allValues) => {
-        let scaledFeedData = allData.find(x => x.display_name === displayName) || {};
+    const getColor = (uri, metric, allValues) => {
+        let scaledFeedData = allData.find(x => x.uri === uri) || {};
         let value = scaledFeedData[metric];
 
         if (value === undefined || !allValues.length) return "white"; 
@@ -144,14 +144,14 @@ const Comparison = ({ feed1, feed2 }) => {
                                             {metric.replaceAll("_", " ")}
                                         </td>
                                         <td>
-                                            <div class="comparison-circle" style={{ backgroundColor: getColor(feed1.feed_id, metric, allMetricValues) }}>
+                                            <div class="comparison-circle" style={{ backgroundColor: getColor(feed1.uri, metric, allMetricValues) }}>
                                                 {percentageMetrics.includes(metric) ? 
                                                     formatAsPercentage(feed1[metric]) : 
                                                     feed1[metric] !== undefined ? feed1[metric] : "N/A"}
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="comparison-circle" style={{ backgroundColor: getColor(feed2.feed_id, metric, allMetricValues) }}>
+                                            <div class="comparison-circle" style={{ backgroundColor: getColor(feed2.uri, metric, allMetricValues) }}>
                                                 {percentageMetrics.includes(metric) ? 
                                                     formatAsPercentage(feed2[metric]) : 
                                                     feed2[metric] !== undefined ? feed2[metric] : "N/A"}
@@ -183,18 +183,18 @@ const Comparison = ({ feed1, feed2 }) => {
                         </div>
                         <ResponsiveContainer width="100%" height={420}>
                             <BarChart
-                                data={metrics.map(metric => {
+                                data={percentageMetrics.map(metric => {
                                     const allMetricValues = allData.map(feed => feed[metric]).filter(val => val !== undefined);
-                                    const val1 = (allData.find(f => f.feed_id === feed1.feed_id) || {})[metric] ?? 0;
-                                    const val2 = (allData.find(f => f.feed_id === feed2.feed_id) || {})[metric] ?? 0;
+                                    const val1 = (allData.find(f => f.uri === feed1.uri) || {})[metric] ?? 0;
+                                    const val2 = (allData.find(f => f.uri === feed2.uri) || {})[metric] ?? 0;
 
                                     return {
                                         name: metric.replaceAll("_", " "),
                                         metricKey: metric,
                                         feed1: val1,
                                         feed2: val2,
-                                        feed1Color: getColor(feed1.feed_id, metric, allMetricValues),
-                                        feed2Color: getColor(feed2.feed_id, metric, allMetricValues)
+                                        feed1Color: getColor(feed1.uri, metric, allMetricValues),
+                                        feed2Color: getColor(feed2.uri, metric, allMetricValues)
                                     };
                                 })}
                                 margin={{ top: 20, right: 30, left: 40, bottom: 40 }}
@@ -223,10 +223,10 @@ const Comparison = ({ feed1, feed2 }) => {
                                 { }
                                 <Bar dataKey="feed1" isAnimationActive={false}>
                                     {
-                                        metrics.map((metric, index) => {
+                                        percentageMetrics.map((metric, index) => {
                                             const allMetricValues = allData.map(feed => feed[metric]).filter(val => val !== undefined);
                                             return (
-                                                <Cell key={`cell-feed1-${metric}`} fill={getColor(feed1.feed_id, metric, allMetricValues)} />
+                                                <Cell key={`cell-feed1-${metric}`} fill={getColor(feed1.uri, metric, allMetricValues)} />
                                             );
                                         })
                                     }
@@ -234,10 +234,10 @@ const Comparison = ({ feed1, feed2 }) => {
                                 </Bar>
                                 <Bar dataKey="feed2" isAnimationActive={false}>
                                     {
-                                        metrics.map((metric, index) => {
+                                        percentageMetrics.map((metric, index) => {
                                             const allMetricValues = allData.map(feed => feed[metric]).filter(val => val !== undefined);
                                             return (
-                                                <Cell key={`cell-feed2-${metric}`} fill={getColor(feed2.feed_id, metric, allMetricValues)} />
+                                                <Cell key={`cell-feed2-${metric}`} fill={getColor(feed2.uri, metric, allMetricValues)} />
                                             );
                                         })
                                     }

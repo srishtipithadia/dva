@@ -272,8 +272,8 @@ table {
     border-radius: 20px;
 }
 
-#likes, #posts, #toxicity_score, #positivity_score, 
-#commercial_link_score, #poster_diversity_score {
+#likes, #number_of_posts, #toxicity_score, #positivity_score, 
+#subjectivity_score, #poster_diversity_score, #reverse_chrono_score {
     background-color: white;
     color: #182451;
     border-radius: 5px;
