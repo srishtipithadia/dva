@@ -43,7 +43,7 @@ const Comparison = ({ feed1, feed2 }) => {
             case "poster_diversity_score":
                 return "The diversity of the users posting content.";
             case "reverse_chrono_score":
-                return "idk";
+                return "The similarity to a feed ordered chronologically.";
             default:
                 return "No description available.";
         }
